@@ -1,2 +1,2 @@
-# HttpLibPy
-Python lib for HTTP
+# IotDevicesPy
+Python lib for controlling IOT devices
