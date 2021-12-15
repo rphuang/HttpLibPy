@@ -1,0 +1,7 @@
+camera.width=320
+camera.height=240
+camera.drawCrosshair=true
+video.httpVideoPort=8000
+video.enableFaceTracking=true
+video.classifier=/home/pi/IotDevicesPy/examples/data/haarcascade_frontalface_alt.xml
+video.indexHtml=/home/pi/IotDevicesPy/examples/templates/index.html
