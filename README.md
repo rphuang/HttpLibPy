@@ -16,12 +16,12 @@ IotDevicesPy is a Python lib for controlling IOT devices that contains following
        * python-opencv, dlib (see Notes below)
        * pip install Flask
 3. Install the IotDevices packages.
-    * Raspberry Pi
+* Raspberry Pi
 ```
         cd IotDevicesPy
         sudo pip3 install .
 ```
-    * Windows
+* Windows
 ```
         cd IotDevicesPy
         pip install .
@@ -67,8 +67,9 @@ Sample codes are provided under the examples folder. Also see https://github.com
     1. install "Desktop development with C++" in Visual Studio
     2. install cmake: pip install CMake
     3. download dlib from https://github.com/davisking/dlib and unzip
-    4. build & install dlib from the unzipped folder: py setup.py install
-    5. install numpy & opencv: pip install numpy opencv-python
+    4. edit numpy.h (see https://github.com/davisking/dlib/issues/2463)
+    5. build & install dlib from the unzipped folder: py setup.py install
+    6. install numpy & opencv: pip install numpy opencv-python
 * Maybe it's better to replace Vernie's head with Raspberry Pi 4 for better stability and performance.
 
 # ToDos
