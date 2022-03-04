@@ -16,6 +16,7 @@ class Config(object):
     def addSettings(self, filePath):
         """ get config settings from a file """
         with open(filePath) as f:
+            key = None
             for line in f.readlines():
                 line = line.strip()  # strip possible trailing \n\r
                 if line.startswith('#') or len(line) == 0:
@@ -26,8 +27,11 @@ class Config(object):
                         key = line[0:index]
                         value = line[index+1:]
                         self.settings[key] = value
-                    else:
+                    elif key is None:
                         print('Invalid setting: ' + line)
+                    else:
+                        # append to previous key
+                        self.settings[key] = self.settings[key] + line
 
     def get(self, key):
         """ get the setting by key """
@@ -44,8 +48,12 @@ class Config(object):
 
     def getOrAddBool(self, key, defaultValue):
         """ get the bool setting by key, add a new key with defaultValue if no key """
-        val = self.getOrAdd(key, defaultValue).lower()
-        return val == '1' or val == 'true' or val == 'yes'
+        value = self.settings.get(key, None)
+        if value != None:
+            val = value.lower()
+            return val == '1' or val == 'true' or val == 'yes'
+        else:
+            return self.set(key, defaultValue)
 
     def getOrAddInt(self, key, defaultValue):
         """ get the integer setting by key, add a new key with defaultValue if no key """

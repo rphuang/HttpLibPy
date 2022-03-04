@@ -15,6 +15,11 @@ class Log(object):
     EnableAction = True
     EnableDebug = False
 
+    # whether to write to logging
+    WriteToLogging = True
+    # whether to write to console (print)
+    WriteToConsole = False
+
     # IotLogger uses INFO to log custom level/severity
     logger = logging.getLogger('IotLogger')
     logger.setLevel(level=logging.INFO)
@@ -55,6 +60,8 @@ class Log(object):
     @staticmethod
     def _log(severity, msg):
         """ log with time stamp and severity """
-        #print('%s %s %s' %(str(datetime.now()), str(severity), str(msg)))
-        Log.logger.info('%s %s' %(str(severity), msg))
+        if Log.WriteToConsole:
+            print('%s %s %s' %(str(datetime.now()), str(severity), str(msg)))
+        if Log.WriteToLogging:
+            Log.logger.info('%s %s' %(str(severity), msg))
 
